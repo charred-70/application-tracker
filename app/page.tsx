@@ -1,10 +1,14 @@
+"use client";
+
 import Image from "next/image";
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import { useState } from 'react'
 
 
 export default function Home() {
+  const [activeTab, setActiveTab] = useState("organize")
   return (
     <div className="flex min-h-screen flex-col bg-white">
       <main className="flex-1">
@@ -26,6 +30,52 @@ export default function Home() {
               <p className="text-sm text-muted-foreground">
                 Free forever, No credit card required.
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Hero Images */}
+        <section className="border-t bg-white py-16">
+          <div>
+            <div>
+              {/* Tabs */}
+              <div>
+                <Button onClick={() => setActiveTab("organize")} className={`rounded-lg`}>
+                  Organize Applications
+                </Button>
+                <Button onClick={() => setActiveTab("hired")}>
+                  Get Hired
+                </Button>
+                <Button onClick={() => setActiveTab("boards")}>
+                  Manage Boards
+                </Button>
+              </div>
+              <div className="relative mx-auto max-w-5xl overflow-hidden rounded-lg border border-gray-200 shadow-xl">
+                {activeTab === "organize" && (
+                  <Image
+                    src='/hero-images/hero1.png'
+                    alt='oragnize application'
+                    width={1200}
+                    height={800}
+                  />
+                )}
+                {activeTab === "hired" && (
+                  <Image
+                    src='/hero-images/hero2.png'
+                    alt='oragnize application'
+                    width={1200}
+                    height={800}
+                  />
+                )}
+                {activeTab === "boards" && (
+                  <Image
+                    src='/hero-images/hero3.png'
+                    alt='oragnize application'
+                    width={1200}
+                    height={800}
+                  />
+                )}
+              </div>
             </div>
           </div>
         </section>
